@@ -1,47 +1,77 @@
 function detailDishes()
 {
   this.detailPage = null;
+  this.additionalInfo = new Array();
+  this.detailInfo = null;
 
   this.createDetailPage = createDetailPage;
-  this.testID = testID;
+  this.searchAdditionInfo = searchAdditionInfo;
+  this.searchID = searchID;
+}
+
+function searchAdditionInfo(menuId)
+{
+  DD.additionInfo = {};
+  for ( var i = 0; i < MR.menuStore.length; ++i )
+  {
+    if ( MR.menuStore[i]['menuId'] == menuId )
+    {
+      DD.additionInfo = {
+        image: 'http://admin.ewaiter.info/' + MR.menuStore[i]['image'],
+        price: MR.menuStore[i]['price'],
+        menuId: menuId,
+        ratingImage: MR.menuStore[i]['ratingImage'],
+        voiceCount: MR.menuStore[i]['voiceCount'],
+        name: MR.menuStore[i]['menuName'],
+        rating: MR.menuStore[i]['rating'],
+        index: i
+      };
+    }
+  }
 }
 
 function createDetailPage()
 {
   this.detailPage = $(
-    '<div data-options="dxView : { name: \'menuDetail_\' + mainObject.additionInfo[\'menuId\'], title: mainObject.additionInfo[\'name\']} ">' +
-    '<div id="detailMenu" data-bind="dxList: { dataSource: detailMenu, grouped: true }">' +
-    '<div data-options="dxTemplate: { name: \'group\' }">' +
-    '<div style="margin: 0px 3% 10px 3%;color: #ffffff;text-align: center;" data-bind="text: name"></div>' +
-    '<div style="text-align: center;"><img style="width: 94%;" data-bind="attr: { src: image }" /></div>' +
-    '<div style="margin: 10px 3% 0px 3%;height: 50px;">' +
-    '<div style="font-size: 12px;margin: 0px 0px 4px 8px;">Оцените блюдо</div>' +
-    '<div class="rating" id="stars" style="height: 36px;">' +
-    '<input type="hidden" name="val" value="' + mainObject.additionInfo.rating + '">' +
-    '<input type="hidden" name="votes" value="' + mainObject.additionInfo.voiceCount + '">' +
-    '</div>' +
-    '<input type="hidden" id="index" data-bind="text: index">' +
-    '<div style="text-align: right;color: #ffffff;" data-bind="text: price"></div>' +
-    '<div style="text-align: right;font-size: 10px;">id: ' +
-    '<span id="menuId" data-bind="text: menuId"></span>' +
-    '</div>' +
-    '</div>' +
-    '<!--<div id="mc-container"></div>-->' +
-    '<div style="width: 100%;height: 300px;margin-top: 14px;" id="iFRM"></div>' +
-    '</div>' +
-    '</div>' +
+    '<div data-options="dxView : { name: \'menuDetail_\' + DD.additionInfo[\'menuId\'], title: DD.additionInfo[\'name\']} ">' +
+      '<div id="detailMenu" data-bind="dxList: { dataSource: DD.detailInfo, grouped: true }">' +
+        '<div data-options="dxTemplate: { name: \'group\' }">' +
+          '<div style="margin: 0px 3% 10px 3%;color: #ffffff;text-align: center;" data-bind="text: name"></div>' +
+          '<div style="text-align: center;"><img style="width: 94%;" data-bind="attr: { src: image }" /></div>' +
+          '<div style="margin: 10px 3% 0px 3%;height: 50px;">' +
+            '<div style="font-size: 12px;margin: 0px 0px 4px 8px;">Оцените блюдо</div>' +
+            '<div class="rating" id="stars" style="height: 36px;">' +
+              '<input type="hidden" name="val" value="' + DD.additionInfo.rating + '">' +
+              '<input type="hidden" name="votes" value="' + DD.additionInfo.voiceCount + '">' +
+            '</div>' +
+            '<input type="hidden" id="index" data-bind="text: index">' +
+              '<div style="text-align: right;color: #ffffff;" data-bind="text: price"></div>' +
+              '<div style="text-align: right;font-size: 10px;">id: ' +
+                '<span id="menuId" data-bind="text: menuId"></span>' +
+              '</div>' +
+          '</div>' +
+      '<!--<div id="mc-container"></div>-->' +
+          '<div style="width: 100%;height: 300px;margin-top: 14px;" id="iFRM"></div>' +
+        '</div>' +
+      '</div>' +
     '</div>');
 
-    if ( !MyApp.app.getViewTemplateInfo( 'menuDetail_' + mainObject.additionInfo['menuId'] ) ) {
+    if ( !MyApp.app.getViewTemplateInfo( 'menuDetail_' + DD.additionInfo['menuId'] ) ) {
       MyApp.app.loadTemplates( DD.detailPage );
     }
 }
 
-function testID(element)
+function searchID(element)
 {
-  $('#1234r').attr('id','');
-  element.id = '1234r';
-  console.log( $('#1234r').children('div') );
+  $('#searchTable').attr('id','');
+  element.id = 'searchTable';
+  DD.searchAdditionInfo( $('#searchTable').find('div.hideID').text() );
+
+  DD.detailInfo = new DevExpress.data.DataSource([]);
+  DD.detailInfo.store().insert( DD.additionInfo );
+
+  DD.createDetailPage();
+  MyApp.app.navigate('menuDetail_' + DD.additionInfo['menuId']);
 }
 
 var DD = new detailDishes();
