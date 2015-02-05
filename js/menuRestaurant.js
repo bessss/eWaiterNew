@@ -5,6 +5,7 @@ function menuRestaurant()
   this.pivotOptions = {
     dataSource: undefined
   }
+
   this.items = new Array();
   this.menuTypeStore = new Array();
   this.menuStore = new Array();

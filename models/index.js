@@ -1,4 +1,6 @@
-  var MyApp = window.MyApp = { };
+var MyApp = window.MyApp = { };
+
+$(document).ready(
   $(function() {
     MyApp.app = new DevExpress.framework.html.HtmlApplication({
       namespace: MyApp,
@@ -16,7 +18,8 @@
 
     MyApp.app.router.register(":view", { view: "home" });
     MyApp.app.navigate();
-  });
+  })
+);
 
-  selectedIndex = ko.observable(0);
-  menuVisible = ko.observable(false);
+selectedIndex = ko.observable(0);
+menuVisible = ko.observable(false);
