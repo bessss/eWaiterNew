@@ -1,0 +1,76 @@
+/*Область где выводится логотип ресторана и его адрес, индивидуально в css файлах ресторанов
+пример из restaurant_evrasia.css:
+ #nav>:first-child {
+   background-image: url('http://ewaiter.info/application/images/bg_all.jpg'); -> фон с бокалами
+   background-repeat: no-repeat;
+   background-position: center;
+   height: 120px;
+   color: black;
+   padding: 0px;
+ }
+
+ #nav>:first-child div div.dx-navigation-item {
+   height: 120px;
+   background: url('http://ewaiter.info/application/images/evrasia_theme_logo.png') no-repeat; -> логотип ресторана
+   background-position: 4px 12px;
+   padding-left: 110px;
+   font-size: 14px; -> размер шрифта --- адреса
+   white-space: normal;
+   margin-top: 10px;
+   width: 160px;
+   display: table-cell;
+   vertical-align: middle;
+   font-weight: bold;
+ }
+
+ #nav div {
+   background-color: #d2202f; -> цвет кнопок меню, здесь же можно работать со шрифтами кнопок
+ }
+
+ .dx-slideout-menu {
+   background-color: #e3e3e3; -> фон всего левого меню
+ }
+*/
+/*Разделительная линия между кнопками*/
+.dx-list-item {
+  border-bottom: 1px solid transparent;
+}
+/*Цвет кнопок левого меню*/
+#nav div {
+  background-color: #f9f9f9;
+}
+/*Фон левого меню*/
+.dx-slideout-menu {
+  background-color: #F9F9F9;
+}
+/*Цвет шрифта кнопок левого меню*/
+.dx-navigation-item {
+  color: #000000;
+}
+/*Логотип компании*/
+#nav>:first-child {
+  background-image: url('http://ewaiter.info/application/images/bg_all.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 120px;
+  color: #000000;
+  padding: 0px;
+}
+
+#nav>:first-child div {
+  background-color: transparent !important;
+}
+
+#nav>:first-child div div.dx-navigation-item {
+  height: 120px;
+  background-position: 4px 12px;
+  padding-left: 110px;
+  font-size: 14px;
+  white-space: normal;
+  margin-top: 10px;
+  width: 160px;
+  display: table-cell;
+  vertical-align: middle;
+  font-weight: bold;
+  color: #ffffff;
+}
