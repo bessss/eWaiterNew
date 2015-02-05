@@ -2,7 +2,7 @@ function detailDishes()
 {
   this.detailPage = null;
   this.additionalInfo = new Array();
-  this.detailInfo = null;
+  this.detailInfoStore = null;
 
   this.createDetailPage = createDetailPage;
   this.searchAdditionInfo = searchAdditionInfo;
@@ -34,7 +34,7 @@ function createDetailPage()
 {
   this.detailPage = $(
     '<div data-options="dxView : { name: \'menuDetail_\' + DD.additionInfo[\'menuId\'], title: DD.additionInfo[\'name\']} ">' +
-      '<div id="detailMenu" data-bind="dxList: { dataSource: DD.detailInfo, grouped: true }">' +
+      '<div id="detailMenu" data-bind="dxList: { dataSource: DD.detailInfoStore, grouped: true }">' +
         '<div data-options="dxTemplate: { name: \'group\' }">' +
           '<div style="margin: 0px 3% 10px 3%;color: #ffffff;text-align: center;" data-bind="text: name"></div>' +
           '<div style="text-align: center;"><img style="width: 94%;" data-bind="attr: { src: image }" /></div>' +
@@ -67,11 +67,10 @@ function searchID(element)
   element.id = 'searchTable';
   DD.searchAdditionInfo( $('#searchTable').find('div.hideID').text() );
 
-  DD.detailInfo = new DevExpress.data.DataSource([]);
-  DD.detailInfo.store().insert( DD.additionInfo );
+  DD.detailInfoStore = new DevExpress.data.DataSource([]);
+  DD.detailInfoStore.store().insert( DD.additionInfo );
 
   DD.createDetailPage();
   MyApp.app.navigate('menuDetail_' + DD.additionInfo['menuId']);
 }
-
 var DD = new detailDishes();
