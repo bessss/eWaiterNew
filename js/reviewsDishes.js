@@ -7,9 +7,6 @@ function reviewsDishes()
 
 function setRewiewsArea()
 {
-console.log(screen.height);
-console.log($('div.layout-header').height());
-console.log($('div.dx-list-group').height());
   this.areaHeight = screen.height - $('div.layout-header').height() - $('div.dx-list-group').height() - 50;
   $('#iFRM').height( RD.areaHeight );
 
