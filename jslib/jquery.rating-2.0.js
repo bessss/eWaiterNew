@@ -222,7 +222,7 @@
 		              $('#stars').replaceWith('<div class="rating" id="stars" style="height: 36px;"><input type="hidden" name="val" value="' + temp.curentScore/temp.voiceCount + '">' +
 	                    '<input type="hidden" name="votes" value="' + temp.voiceCount + '"></div>');
 		              //setTimeout(function(){
-		              modeMMTitems( temp.curentScore/temp.voiceCount,temp.voiceCount );
+		              modeMRitems( temp.curentScore/temp.voiceCount,temp.voiceCount );
 		                $('#stars').rating({fx: 'half',image: 'images/stars.png',loader: 'images/ajax-loader.gif',width: 20,url: 'http://admin.ewaiter.info/includes/insertVoise.php'});
 		              //},400);
 		              //$('div.vote-result').html( temp.voiceCount );
@@ -333,18 +333,17 @@ function setRatingImg( score )
   }
 }
 
-function modeMMTitems(curentScore,voiceCount)
+function modeMRitems(curentScore,voiceCount)
 {
   var tempId = $('#menuId').html();
-  var tempStatus = false;
-  for ( var i = 0; i < MMT.menuMenuTypeStore.length; ++i )
+  DD.modeRating = true;
+  for ( var i = 0; i < MR.menuStore.length; ++i )
   {
-    if ( MMT.menuMenuTypeStore[i].menuId == tempId )
+    if ( MR.menuStore[i].menuId == tempId )
     {
-      MMT.menuMenuTypeStore[i].rating = curentScore;
-      MMT.menuMenuTypeStore[i].voiceCount = voiceCount;
-      MMT.menuMenuTypeStore[i].ratingImage = setRatingImg( curentScore );
-      MMT.status = true;
+      MR.menuStore[i].rating = curentScore;
+      MR.menuStore[i].voiceCount = voiceCount;
+      MR.menuStore[i].ratingImage = setRatingImg( curentScore );
     }
   }
 }

@@ -20,7 +20,23 @@ $(document).ready(
     MyApp.app.navigate();
 
     MyApp.app.on("viewShown", function(args) {
-$('#stars').rating({fx: 'half',image: 'images/stars.png',loader: 'images/ajax-loader.gif',width: 20,url: 'http://admin.ewaiter.info/includes/insertVoise.php'});
+      if ( args.direction == 'backward' )
+      {
+        if ( DD.modeRating == true )
+        {
+          //Если меняли рейтинг
+          MR.setItems();
+          DD.modeRating = false;
+        }
+      }
+      
+      if ( args.direction == 'forward' )
+      {
+        $('#stars').rating({fx: 'half',image: 'images/stars.png',loader: 'images/ajax-loader.gif',width: 20,url: 'http://admin.ewaiter.info/includes/insertVoise.php'});
+        RD.setRewiewsArea();
+      }
+
+      //console.log(args);
     });
 
   })
