@@ -20,6 +20,8 @@ $(document).ready(
     MyApp.app.navigate();
 
     MyApp.app.on("viewShown", function(args) {
+      console.log(args);
+      WOLM.entryWOLM(args);
       if ( args.direction == 'backward' )
       {
         if ( DD.modeRating == true )

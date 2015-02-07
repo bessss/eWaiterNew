@@ -1,3 +1,37 @@
 ﻿.dx-list-group-header {
   border-bottom: 0px solid rgba(0,0,0,.3);
 }
+
+/*Цвет левой панели*/
+.dx-slideout-menu{
+  background-color: #dddddd;
+}
+
+/*Панель табов*/
+.dx-pivottabs{
+  background-color: transparent;
+}
+
+.dx-pivottabs-tab-selected {
+  -webkit-box-shadow: inset 0 -2px #aeaeae,inset 0 -8px #aeaeae;
+  -moz-box-shadow: inset 0 -2px #aeaeae,inset 0 -8px #aeaeae;
+  box-shadow: inset 0 -2px #aeaeae,inset 0 -8px #aeaeae;
+}
+
+/*Кнопки табов*/
+.dx-pivottabs-tab-content{
+  color: #616161;
+}
+
+.menuName, .voiceCount{
+  color: #616161;
+}
+
+.price{
+  color: #b21212;
+}
+
+/*Левое меню - форматирование*/
+.dx-slideout-wrapper div.dx-scrollable-content{
+  margin: 0px;
+}
