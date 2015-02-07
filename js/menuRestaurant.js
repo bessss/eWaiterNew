@@ -39,6 +39,7 @@ function setItems()
 
 function getMenu()
 {
+  WOLM.setRestaurantData();
   //MR.pivotOptions.itemTemplate = undefined;
   MR.pivotOptions.dataSource = undefined;
 

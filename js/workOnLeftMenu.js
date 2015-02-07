@@ -5,6 +5,14 @@ function workOnLeftMenu()
   this.viewHow = viewHow;
   this.viewHideMenu = viewHideMenu;
   this.entryWOLM = entryWOLM;
+  this.setRestaurantData = setRestaurantData;
+}
+
+function setRestaurantData()
+{
+  $('#imageRestaurant').html('<img src="http://ewaiter.info/application/images/' + SR.curentRestaurant[0].cssName + '_theme_logo.png" />');
+  $('#nameRestaurant').html(SR.curentRestaurant[0].text);
+  $('#contactRestaurant').html('(' + SR.curentRestaurant[0].adress + ')');
 }
 
 function entryWOLM(args)

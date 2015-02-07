@@ -2,6 +2,7 @@ function layoutNavigator()
 {
   this.curentLayout = 0;
   this.items = [
+    { text: 'Название ресторана', icon: 'plus', menuTemplate: 'restaurantName' },
     { text: 'Меню ресторана', icon: 'plus', menuTemplate: 'restaurantMenu' },
     { text: 'Другой ресторан', icon: 'plus', menuTemplate: 'anotherRestaurant' },
     { text: 'Где доступен сервис', icon: 'plus', menuTemplate: 'map' },

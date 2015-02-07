@@ -23,6 +23,10 @@
   color: #616161;
 }
 
+.dx-pivottabs-tab{
+  font-size: 16px;
+}
+
 .menuName, .voiceCount{
   color: #616161;
 }
