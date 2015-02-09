@@ -16,7 +16,7 @@ function selectionRestaurant()
       //Предлагаем выбор - показываем выбор
       $('#restaurantMenu').parent().css('display','block');
       $('#anotherRestaurant').parent().css('display','block');
-      console.log('Выборка');
+      //console.log('Выборка');
     }
     else
     {
@@ -24,7 +24,7 @@ function selectionRestaurant()
       //$('#anotherRestaurant').parent().css('display','none');
       //$('#restaurantMenu').parent().css('display','block');
 
-      console.log('Автоматическая загрузка');
+      //console.log('Автоматическая загрузка');
       this.curentRestaurant = SRN.nearStoreRestaurant;
       MR.getMenu();
     }
@@ -35,7 +35,7 @@ function selectionRestaurant()
     $('#restaurantMenu').parent().css('display','none');
     $('#anotherRestaurant').parent().css('display','none');
 
-    console.log('Ничего нет рядом');
+    //console.log('Ничего нет рядом');
     this.curentRestaurant = null;
   }
 
