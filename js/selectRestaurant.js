@@ -25,8 +25,9 @@ function selectionRestaurant()
       //$('#restaurantMenu').parent().css('display','block');
 
       //console.log('Автоматическая загрузка');
-      this.curentRestaurant = SRN.nearStoreRestaurant;
-      MR.getMenu();
+      /* TODO убрать коментарий this.curentRestaurant = SRN.nearStoreRestaurant;
+      MR.getMenu();*/
+     SRP.createPanel();
     }
   }
   else
