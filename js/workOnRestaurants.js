@@ -25,7 +25,7 @@ function getMarkers()
     url: "http://admin.ewaiter.info/outputs/outputRestaurantCoordinates.php",
     data: "name=John&location=Boston",
     error: function(){
-      //LP.deleteLoadPanel();
+      LP.deleteLoadPanel();
     },
     success: function(msg){
       if ( msg != '' )
