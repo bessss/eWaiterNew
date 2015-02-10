@@ -11,6 +11,7 @@ function coordinatesDetermination()
 
 function getCurentCoordinates()
 {
+  LP.createLoadPanel('Определение местоположения');
   var obj = this;
   navigator.geolocation.getCurrentPosition(function(position) {
     obj.curentCoordinates['x'] = position.coords.latitude;

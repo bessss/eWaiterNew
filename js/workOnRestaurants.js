@@ -19,6 +19,7 @@ function parseDataMarkers(temp)
 
 function getMarkers()
 {
+  LP.createLoadPanel('Получение маркеров');
   $.ajax({
     type: "POST",
     url: "http://admin.ewaiter.info/outputs/outputRestaurantCoordinates.php",
@@ -30,6 +31,7 @@ function getMarkers()
       if ( msg != '' )
       {
         var temp = JSON.parse(msg);
+        LP.deleteLoadPanel();
         WOR.parseDataMarkers(temp);
         //obj.updateUser = temp['updateTimeUser'];
         //selectRest.updateTimeRest = temp['updateTimeRest'];

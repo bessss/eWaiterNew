@@ -35,10 +35,12 @@ function setItems()
   MR.pivotOptions.dataSource = MR.items;
   $('#pivotMenu').css('display','block');
   $('#pivotMenu').dxPivot( MR.pivotOptions );
+  LP.deleteLoadPanel();
 }
 
 function getMenu()
 {
+  LP.createLoadPanel('Получение меню ресторана');
   WOLM.setRestaurantData();
   //MR.pivotOptions.itemTemplate = undefined;
   MR.pivotOptions.dataSource = undefined;
