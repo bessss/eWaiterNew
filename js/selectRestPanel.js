@@ -26,6 +26,13 @@ function selectRestPanel()
   this.tempArray = new Array();
 
   this.createPanel = createPanel;
+  this.deletePanel = deletePanel;
+}
+
+function deletePanel()
+{
+  SRP.options.visible = false;
+  $('#selectRestPanel').dxActionSheet( SRP.options );
 }
 
 function createPanel(user)

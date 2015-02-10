@@ -13,6 +13,14 @@ function menuRestaurant()
   this.setItems = setItems;
   this.getImagePath = getImagePath;
   this.getMenu = getMenu;
+  this.deletePivot = deletePivot;
+}
+
+function deletePivot()
+{
+  MR.pivotOptions.itemTemplate = '';
+  MR.pivotOptions.dataSource = undefined;
+  $('#pivotMenu').dxPivot( MMT.options );
 }
 
 function getImagePath(imagePath)

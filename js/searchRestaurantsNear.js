@@ -8,6 +8,15 @@ function SearchRestaurantsNear()
   this.calcDist = calcDist;
   this.searchRest = searchRest;
   this.intervalSearchRest = intervalSearchRest;
+  this.intervalSearch = intervalSearch;
+  this.cyclicSearch = cyclicSearch;
+}
+
+function intervalSearch()
+{
+  setInterval(function(){
+    SRN.intervalSearchRest();
+  },3000);//selectRest.updateTimeRest);
 }
 
 function calcDist(lat1, long1, lat2, long2)
@@ -35,62 +44,59 @@ function calcDist(lat1, long1, lat2, long2)
   return dist;
 }
 
+function cyclicSearch()
+{
+  var tempArray = new Array();
+
+  for ( var i = 0; i < SRN.store.length; ++i )
+  {
+    var tempDist = this.calcDist( CD.curentCoordinates['x'], CD.curentCoordinates['y'], this.store[i]['latitude'], this.store[i]['longitude'] );
+    if ( ( parseFloat(this.store[i]['accuracy']) + CD.curentCoordinates['accuracy'] ) >= tempDist )
+    {
+      tempArray.push( this.store[i] );
+    }
+  }
+
+  return tempArray;
+}
+
 function intervalSearchRest()
 {
   var obj = this;
   var tempArray = new Array();
 
-  for ( var i = 0; i < obj.store.length; ++i )
-  {
-    var tempDist = obj.calcDist( mapObject.latitude, mapObject.longitude, obj.store[i]['latitude'], obj.store[i]['longitude'] );
-    if ( ( parseFloat(obj.store[i]['accuracy']) + mapObject.accuracy ) >= tempDist )
-    {
-      tempArray.push( obj.store[i] );
-    }
-  }
+  tempArray = SRN.cyclicSearch();
 
-  IB.analizIB( tempArray.length );
-  if ( tempArray.length > 0 )
+  if ( JSON.stringify(tempArray) != JSON.stringify(SRN.nearStoreRestaurant) )
   {
-    selectRest.checkRestaurant( tempArray );
-    MyApp.app.navigation[2].option("visible", true);
-    if ( selectRest.checkRest == true )
+    SRN.nearStoreRestaurant = tempArray;
+    console.log('Зафиксировано изменение: ' + tempArray.length);
+    //Еcли произошло изменеиние колличества ресторанов, проверяем наличие выбранного ресторана
+    if ( SR.curentRestaurant.idRestaurant != undefined )
     {
-      //Если находимся в текущем ресторане
-      if ( SRP.options.visible == true )
+      var tempCurentR = false;
+      //Если был выбор ресторана ищем в ближайщих текущий
+      for ( var i = 0; i < SRN.nearStoreRestaurant.length; ++i )
       {
-      //Если активна панель выбора
-        if ( selectRest.restCount != tempArray.length )
+        if ( SRN.nearStoreRestaurant[0]['idRestaurant'] == SR.curentRestaurant )
         {
-        //Список ресторанов изменился, но рядом есть наш ресторан
-        SRP.createPanel( tempArray );
+          tempCurentR = true;
         }
+      }
+      
+      if ( tempCurentR == false )
+      {
+        console.log('Текущего нашего ресторана НЕТ рядом !');
+        //Текущего нашего ресторана НЕТ рядом !
+        SR.selectionRestaurant();
       }
     }
     else
     {
-    //Если находимся не в выбранном ранее ресторане
-    if ( JSON.stringify( tempArray ) != JSON.stringify( selectRest.restaurantStore ) )
-    {
-      //Защита от моргания панели выбора, если список ресторанов отличен от предыдущего
-      SRP.createPanel( tempArray );
-    }
-
-    this.resetAll();
+      //Если выбора ресторана не было, то показываем панель выбора
+      SR.selectionRestaurant();
     }
   }
-  else
-  {
-    SRP.createPanel( tempArray );
-    this.resetAll();
-    MyApp.app.navigation[1].option("visible", false);
-    MyApp.app.navigation[2].option("visible", false);
-    LP.createToastMessage('Рядом с Вами нет ресторанов',3000,1);
-  }
-
-  selectRest.restCount = tempArray.length;
-  selectRest.restaurantStore = tempArray;
-  //document.title = tempArray.length;
 }
 
 function searchRest(markersStore)
@@ -106,18 +112,13 @@ function searchRest(markersStore)
     var tempCount = this.store.length;
   }
 
-  for ( var i = 0; i < tempCount; ++i )
-  {
-    var tempDist = this.calcDist( CD.curentCoordinates['x'], CD.curentCoordinates['y'], this.store[i]['latitude'], this.store[i]['longitude'] );
-    if ( ( parseFloat(this.store[i]['accuracy']) + CD.curentCoordinates['accuracy'] ) >= tempDist )
-    {
-      tempArray.push( this.store[i] );
-    }
-  }
+  tempArray = SRN.cyclicSearch();
 
   this.countNear = tempArray.length;
   this.nearStoreRestaurant = tempArray;
   SR.selectionRestaurant();
+
+  SRN.intervalSearch();
 }
 
 var SRN = new SearchRestaurantsNear();
