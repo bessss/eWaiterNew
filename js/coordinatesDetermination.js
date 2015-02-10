@@ -6,7 +6,26 @@ function coordinatesDetermination()
   this.timeToUpdate = null;
 
   this.getCurentCoordinates = getCurentCoordinates;
+  this.intervalCoordinates = intervalCoordinates;
+  this.mama = mama;
   //this.getCurentCoordinates();
+}
+
+function intervalCoordinates()
+{
+  setInterval(function(){
+    CD.mama();
+  },CD.timeToUpdate);
+}
+
+function mama()
+{
+  var obj = this;
+  navigator.geolocation.getCurrentPosition(function(position) {
+    obj.curentCoordinates['x'] = position.coords.latitude;
+    obj.curentCoordinates['y'] = position.coords.longitude;
+    obj.curentCoordinates['accuracy'] = position.coords.accuracy;
+  },function(){},{ maximumAge: 400, timeout: 10000, enableHighAccuracy: true });
 }
 
 function getCurentCoordinates()

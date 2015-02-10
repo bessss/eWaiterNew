@@ -15,6 +15,7 @@ function parseDataMarkers(temp)
   this.updateTimeMarkers = temp['updateTimeRest'];
   this.markers = temp['restaurant'];
   SRN.searchRest(this.markers);
+  CD.intervalCoordinates();
 }
 
 function getMarkers()
