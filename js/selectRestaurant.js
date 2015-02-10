@@ -42,4 +42,4 @@ function selectionRestaurant()
   }
 }
 
-var SR = new selectRestaurant();
+var SR = new selectRestaurant(); 
