@@ -19,25 +19,35 @@ $(document).ready(
     MyApp.app.router.register(":view", { view: "home" });
     MyApp.app.navigate();
 
-    MyApp.app.on("viewShown", function(args) {
+    MyApp.app.on("viewShown", function(args) {console.log(args.viewInfo.viewName);
       WOLM.entryWOLM(args);
-      if ( args.direction == 'backward' )
+      switch ( args.viewInfo.viewName )
       {
-        if ( DD.modeRating == true )
+        case 'map':
         {
-          //Если меняли рейтинг
-          MR.setItems();
-          DD.modeRating = false;
+          Map.createMap();
+          break;
+        }
+        case 'home':
+        {
+          if ( DD.modeRating == true )
+          {
+            //Если меняли рейтинг
+            MR.setItems();
+            DD.modeRating = false;
+          }
+          break;
+        }
+        default:
+        {
+          if( args.viewInfo.viewName.indexOf('menuDetail') != -1 )
+          {
+            $('#stars').rating({fx: 'half',image: 'images/stars.png',loader: 'images/ajax-loader.gif',width: 20,url: 'http://admin.ewaiter.info/includes/insertVoise.php'});
+            RD.setRewiewsArea();
+          }
+          break;
         }
       }
-      
-      if ( args.direction == 'forward' )
-      {
-        $('#stars').rating({fx: 'half',image: 'images/stars.png',loader: 'images/ajax-loader.gif',width: 20,url: 'http://admin.ewaiter.info/includes/insertVoise.php'});
-        RD.setRewiewsArea();
-      }
-
-      //console.log(args);
     });
 
   })

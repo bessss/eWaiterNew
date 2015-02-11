@@ -13,34 +13,35 @@ function layoutNavigator()
 
 function setLayout(e)
 {
-  switch ( e.itemIndex )
+  switch ( e.itemData.menuTemplate )
   {
-    case 0:
+    case 'home':
     {
       //Меню ресторана
-      LN.curentLayout = 0;
-      MyApp.app.navigate('home');
-      break;
-    }
-    case 1:
-    {
-      //Где доступен сервис
       LN.curentLayout = 1;
       MyApp.app.navigate('home');
       break;
     }
-    case 2:
+    case 'anotherRestaurant':
     {
-      //Где доступен сервис
+      //Выбор другого ресторана
       LN.curentLayout = 2;
-      MyApp.app.navigate('home');
+      SRP.createPanel();
       break;
     }
-    case 3:
+    case 'map':
     {
       //Где доступен сервис
       LN.curentLayout = 3;
-      MyApp.app.navigate('home');
+      MyApp.app.navigate('map');
+      //Map.createMap();
+      break;
+    }
+    case 'howToUse':
+    {
+      //Где доступен сервис
+      LN.curentLayout = 4;
+      //MyApp.app.navigate('home');
       break;
     }
   }

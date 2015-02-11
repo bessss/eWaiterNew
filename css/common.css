@@ -44,3 +44,12 @@
 .dx-actionsheet-container{
   height: 200px;
 }*/
+
+/*Панель выбора - кнопка cancel*/
+div.dx-actionsheet-cancel{
+  width: 100%;
+}
+
+div.dx-actionsheet-cancel div.dx-button-content{
+  text-align: center !important;
+}
