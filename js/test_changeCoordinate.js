@@ -50,6 +50,7 @@ function changeCoordinates()
 
 function setChangeCoordTimer()
 {
+  CC.timer = 1;
   this.timer = setInterval(function(){
     CC.timer += 1;
     CC.changeCoordinates();

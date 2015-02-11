@@ -74,12 +74,11 @@ function getMenu()
       else
       {
         //MyApp.app.navigation[1].option("visible", false);
-        //LP.createToastMessage('Меню для этого ресторана отсутствует',3000,1);
+        LP.deleteLoadPanel();
+        TM.createToastMessage('Меню для этого ресторана отсутствует',3000,1);
       }
     }
   });
-
-  //LP.deleteLoadPanel();
 }
 
 var MR = new menuRestaurant();

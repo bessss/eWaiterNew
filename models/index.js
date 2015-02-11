@@ -19,8 +19,9 @@ $(document).ready(
     MyApp.app.router.register(":view", { view: "home" });
     MyApp.app.navigate();
 
-    MyApp.app.on("viewShown", function(args) {console.log(args.viewInfo.viewName);
+    MyApp.app.on("viewShown", function(args) {console.log(args);
       WOLM.entryWOLM(args);
+      MyApp.curentView = args.viewInfo.viewName;
       switch ( args.viewInfo.viewName )
       {
         case 'map':
@@ -30,6 +31,11 @@ $(document).ready(
         }
         case 'home':
         {
+          if ( args.direction == 'backward' )
+          {
+            MR.setItems();
+          }
+
           if ( DD.modeRating == true )
           {
             //Если меняли рейтинг

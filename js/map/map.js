@@ -8,11 +8,31 @@ function map()
     mapType: "satellite",
     markers: new Array(),
     autoAdjust: false
-    //center: "40.749825, -73.987963"
   }
 
   this.createMap = createMap;
   this.createMarkers = createMarkers;
+  this.setUserMarker = setUserMarker;
+  this.updateUserMarker = updateUserMarker;
+}
+
+function updateUserMarker()
+{
+  $('#mapDiv').dxMap( 'instance' ).removeMarker( Map.options.markers.length - 1 );
+  $('#mapDiv').dxMap( 'instance' ).addMarker({
+    title: 'Вы',
+    location: CD.curentCoordinates['x'] + ',' + CD.curentCoordinates['y'],
+    tooltip: '<div>Вы</div>'
+  });
+}
+
+function setUserMarker()
+{
+  Map.options.markers.push({
+    title: 'Вы',
+    location: CD.curentCoordinates['x'] + ',' + CD.curentCoordinates['y'],
+    tooltip: '<div>Вы</div>'
+  });
 }
 
 function createMarkers()
@@ -29,9 +49,10 @@ function createMarkers()
                     <td style="padding-left: 10px;font-size: 14px;"><div style="text-decoration: underline;">' + WOR.markers[i]['shotName'] + '</div><div style="font-size: 12px;">' + WOR.markers[i]['adress'] + '</div><div style="font-size: 12px;">' + WOR.markers[i]['contact'] + '</div></td>\
                   </tr>\
                 </table>'
-      //onClick: function () { DevExpress.ui.notify("Marker 'C' clicked!", "info", 1000); }
     });
   }
+
+  Map.setUserMarker();
 }
 
 function createMap()

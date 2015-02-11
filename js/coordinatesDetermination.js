@@ -25,6 +25,10 @@ function mama()
     obj.curentCoordinates['x'] = position.coords.latitude;
     obj.curentCoordinates['y'] = position.coords.longitude;
     obj.curentCoordinates['accuracy'] = position.coords.accuracy;
+    if ( MyApp.curentView == 'map' )
+    {
+      Map.updateUserMarker();
+    }
   },function(){},{ maximumAge: 400, timeout: 10000, enableHighAccuracy: true });
 }
 
