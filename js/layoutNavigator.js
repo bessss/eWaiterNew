@@ -44,7 +44,7 @@ function layoutNavigator()
   this.items = [
     { text: 'Название ресторана', menuTemplate: restaurantName },
     { text: 'Меню ресторана', menuTemplate: restaurantMenu, onExecute: "#home" },
-    { text: 'Другой ресторан', menuTemplate: anotherRestaurant, action: function(){SRP.createPanel();} },
+    { text: 'Другой ресторан', menuTemplate: anotherRestaurant, onExecute: function(){SRP.createPanel();} },
     { text: 'Где доступен сервис', menuTemplate: map, onExecute: "#map" },
     { text: 'Как пользоваться', menuTemplate: howToUse, onExecute: "#how" }
   ];

@@ -29,6 +29,11 @@ function entryWOLM(args)
       WOLM.viewMap();
       break;
     }
+    case 'how':
+    {
+      WOLM.viewHow();
+      break;
+    }
   }
 }
 
@@ -77,7 +82,7 @@ function viewHow()
 {
   $('#restaurantMenu').parent().css('background-color','#dddddd');
   $('#map').parent().css('background-color','#dddddd');
-  $('#howToUse').parent().css('background-color','#e8e8e8');
+  $('#howToUse').parent().css('background-color','#F2F2F2');
   this.viewHideMenu();
 }
 

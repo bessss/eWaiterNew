@@ -53,3 +53,8 @@ div.dx-actionsheet-cancel{
 div.dx-actionsheet-cancel div.dx-button-content{
   text-align: center !important;
 }
+
+/*Окно - прелоадер*/
+.dx-loadpanel-content{
+  background-color: white;
+}
