@@ -46,7 +46,7 @@ function layoutNavigator()
     { text: 'Меню ресторана', menuTemplate: restaurantMenu, onExecute: "#home" },
     { text: 'Другой ресторан', menuTemplate: anotherRestaurant, action: function(){SRP.createPanel();} },
     { text: 'Где доступен сервис', menuTemplate: map, onExecute: "#map" },
-    { text: 'Как пользоваться', menuTemplate: howToUse, onExecute: "howToUse" }
+    { text: 'Как пользоваться', menuTemplate: howToUse, onExecute: "#how" }
   ];
 
   this.setLayout = setLayout;
