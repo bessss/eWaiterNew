@@ -102,9 +102,8 @@
                     $toolbar.find(".nav-button").data("dxButton").option("onClick", $.proxy(that._toggleNavigation, that, $markup))
                 };
             initNavButton();
-            toolbar.on("optionChanged", function(args) {
-                if (args.name === "items")
-                    initNavButton()
+            toolbar.on("contentReady", function(args) {
+                initNavButton()
             })
         },
         _initNavigation: function($markup) {

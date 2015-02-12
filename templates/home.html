@@ -1,80 +1,25 @@
 <div data-options="dxView : { name: 'home', title: 'Меню ресторана' } ">
-  <div data-bind="dxCommand: { id: 'add', iconSrc: 'images/leftMenu/ic_menu_grey.png', onExecute: handleAdd } " ></div>
-  <!-- Левая панель с меню -->
-  <div id="slideOut" data-bind="dxSlideOut:{itemTemplate: 'pivot', dataSource: LN.items, selectedIndex: selectedIndex, menuVisible: menuVisible, onItemClick: LN.setLayout}">
 
-    <div data-options="dxTemplate : { name: 'pivot' } ">
-      <div id="pivotMenu" data-bind="dxPivot: { dataSource: MR.items }" style="display: none;margin-left: 10px;">
-        <div data-options="dxTemplate : { name: 'MRx' } ">
-          <div data-bind="dxList: { dataSource: MRlist }">
-            <div data-options="dxTemplate : { name: 'item' } ">
-              <table style="width: 100%;" onclick="DD.searchID(this);">
-                <tr>
-                  <td style="width: 140px;vertical-align: top;"><img style="width: 140px; margin: 4px;box-shadow: 0 0 12px rgba(0,0,0,0.5);" data-bind="attr: { src: getImagePath(image) }" /></td>
-                  <td style="vertical-align: top;padding-left: 10px;">
-                    <div class="menuName" data-bind="text: menuName" style="white-space: normal;"></div>
-                    <div class="price" data-bind="text: price" style="font-size: 12px; font-weight: bold;"></div>
-                    <div style="float: left;"><img data-bind="attr: { src: ratingImage }" /></div>
-                    <div class="voiceCount" style="float: left;font-size: 12px;margin-left: 10px;height: 25px; line-height: 25px;" data-bind="text: voiceCount"></div>
-                    <div style="float: left;width: 16px;height: 25px;background-image: url('images/userSmall.png');background-repeat: no-repeat;background-position: 0px 5px;"></div>
-                    <div style="display: none;" data-bind="text: menuId" divId='' class="hideID"></div>
-                  </td>
-                </tr>
-              </table>
-            </div>
-          </div>
+  <div id="pivotMenu" data-bind="dxPivot: { dataSource: MR.items }" style="display: none;margin-left: 10px;">
+    <div data-options="dxTemplate : { name: 'MRx' } ">
+      <div data-bind="dxList: { dataSource: MRlist }">
+        <div data-options="dxTemplate : { name: 'item' } ">
+          <table style="width: 100%;" onclick="DD.searchID(this);">
+            <tr>
+              <td style="width: 140px;vertical-align: top;"><img style="width: 140px; margin: 4px;box-shadow: 0 0 12px rgba(0,0,0,0.5);" data-bind="attr: { src: getImagePath(image) }" /></td>
+              <td style="vertical-align: top;padding-left: 10px;">
+                <div class="menuName" data-bind="text: menuName" style="white-space: normal;"></div>
+                <div class="price" data-bind="text: price" style="font-size: 12px; font-weight: bold;"></div>
+                <div style="float: left;"><img data-bind="attr: { src: ratingImage }" /></div>
+                <div class="voiceCount" style="float: left;font-size: 12px;margin-left: 10px;height: 25px; line-height: 25px;" data-bind="text: voiceCount"></div>
+                <div style="float: left;width: 16px;height: 25px;background-image: url('images/userSmall.png');background-repeat: no-repeat;background-position: 0px 5px;"></div>
+                <div style="display: none;" data-bind="text: menuId" divId='' class="hideID"></div>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
-
-    <div id="restaurantName" data-options="dxTemplate : { name: 'restaurantName' } " style="padding: 0px;">
-      <table style="width: 280px; height: 188px; background-image: url('images/bg_all.jpg');">
-        <tr>
-          <td id="imageRestaurant" style="width: 96px;padding-left: 10px;"><img src="images/dve_palochki_theme_logo.png" /></td>
-          <td style="padding-left: 10px; color: white; width: 184px;">
-            <div id="nameRestaurant" style="font-size: 16px; text-transform: uppercase; font-weight: bold; white-space: normal;">Имя ресторана</div>
-            <div id="contactRestaurant" style="font-weight: 12px; white-space: normal;">(адрес ресторана)</div>
-          </td>
-        </tr>
-      </table>
-    </div>
-
-    <div id="restaurantMenu" data-options="dxTemplate : { name: 'restaurantMenu' } ">
-      <table>
-        <tr>
-          <td><img src="images/leftMenu/ic_home_grey.png" style="width: 32px;" /></td>
-          <td style="padding-left: 10px;"><div data-bind="text: text"></div></td>
-        </tr>
-      </table>
-    </div>
-
-    <div id="anotherRestaurant" data-options="dxTemplate : { name: 'anotherRestaurant' } ">
-      <table>
-        <tr>
-          <td><img src="images/leftMenu/ic_autorene_grey.png" style="width: 28px;" /></td>
-          <td style="padding-left: 10px;"><div data-bind="text: text"></div></td>
-        </tr>
-      </table>
-    </div>
-
-    <div id="map" data-options="dxTemplate : { name: 'map' } ">
-      <table>
-        <tr>
-          <td><img src="images/leftMenu/ic_room_grey.png" style="width: 28px;" /></td>
-          <td style="padding-left: 10px;"><div data-bind="text: text"></div></td>
-        </tr>
-      </table>
-    </div>
-
-    <div id="howToUse" data-options="dxTemplate : { name: 'howToUse' } ">
-      <table>
-        <tr>
-          <td><img src="images/leftMenu/ic_help_grey.png" style="width: 28px;" /></td>
-          <td style="padding-left: 10px;"><div data-bind="text: text"></div></td>
-        </tr>
-      </table>
-    </div>
-
   </div>
 
 </div>

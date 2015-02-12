@@ -43,13 +43,13 @@ function createPanel(user)
 
   if ( SRN.nearStoreRestaurant.length > 0 )
   {
-    this.options.visible = true;
-    this.tempArray = new Array();
-    this.options.dataSource = SRN.nearStoreRestaurant;
+    SRP.options.visible = true;
+    SRP.tempArray = new Array();
+    SRP.options.dataSource = SRN.nearStoreRestaurant;
   }
   else
   {
-    this.options.visible = false;
+    SRP.options.visible = false;
   }
 
   $('#selectRestPanel').dxActionSheet( obj.options );

@@ -18,12 +18,12 @@ function map()
 
 function updateUserMarker()
 {
-  $('#mapDiv').dxMap( 'instance' ).removeMarker( Map.options.markers.length - 1 );
+  /*$('#mapDiv').dxMap( 'instance' ).removeMarker( Map.options.markers.length - 1 );console.log('тутё');
   $('#mapDiv').dxMap( 'instance' ).addMarker({
     title: 'Вы',
     location: CD.curentCoordinates['x'] + ',' + CD.curentCoordinates['y'],
     tooltip: '<div>Вы</div>'
-  });
+  });*/
 }
 
 function setUserMarker()

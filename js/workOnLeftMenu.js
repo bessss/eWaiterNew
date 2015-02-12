@@ -59,7 +59,7 @@ function viewHideMenu()
 
 function viewHome()
 {
-  $('#restaurantMenu').parent().css('background-color','#e8e8e8');
+  $('#restaurantMenu').parent().css('background-color','#F2F2F2');
   $('#map').parent().css('background-color','#dddddd');
   $('#howToUse').parent().css('background-color','#dddddd');
   this.viewHideMenu();
@@ -68,7 +68,7 @@ function viewHome()
 function viewMap()
 {
   $('#restaurantMenu').parent().css('background-color','#dddddd');
-  $('#map').parent().css('background-color','#e8e8e8');
+  $('#map').parent().css('background-color','#F2F2F2');
   $('#howToUse').parent().css('background-color','#dddddd');
   this.viewHideMenu();
 }

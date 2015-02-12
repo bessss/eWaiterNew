@@ -1,25 +1,16 @@
 var MyApp = window.MyApp = { };
-
 $(document).ready(
   $(function() {
     MyApp.app = new DevExpress.framework.html.HtmlApplication({
       namespace: MyApp,
-      layoutSet: DevExpress.framework.html.layoutSets['simple'],
-      commandMapping: {
-       "android-simple-toolbar": {
-          commands: [
-          {
-            id: "add",
-            location: "before"
-          }]
-        }
-      }
+      layoutSet: DevExpress.framework.html.layoutSets['slideout'],
+      navigation: LN.items
     });
 
     MyApp.app.router.register(":view", { view: "home" });
     MyApp.app.navigate();
 
-    MyApp.app.on("viewShown", function(args) {console.log(args);
+    MyApp.app.on("viewShown", function(args) {
       WOLM.entryWOLM(args);
       MyApp.curentView = args.viewInfo.viewName;
       switch ( args.viewInfo.viewName )
@@ -29,7 +20,7 @@ $(document).ready(
           Map.createMap();
           break;
         }
-        case 'home':
+        /*case 'home':
         {
           if ( args.direction == 'backward' )
           {
@@ -43,8 +34,8 @@ $(document).ready(
             DD.modeRating = false;
           }
           break;
-        }
-        default:
+        }*/
+        /*default:
         {
           if( args.viewInfo.viewName.indexOf('menuDetail') != -1 )
           {
@@ -52,12 +43,9 @@ $(document).ready(
             RD.setRewiewsArea();
           }
           break;
-        }
+        }*/
       }
     });
 
   })
 );
-
-selectedIndex = ko.observable(0);
-menuVisible = ko.observable(false);

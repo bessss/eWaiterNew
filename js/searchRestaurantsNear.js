@@ -115,6 +115,12 @@ function searchRest(markersStore)
   tempArray = SRN.cyclicSearch();
 
   this.countNear = tempArray.length;
+  
+  if ( this.countNear == 0 )
+  {
+  
+  }
+  
   this.nearStoreRestaurant = tempArray;
   SR.selectionRestaurant();
 
