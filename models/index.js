@@ -20,6 +20,11 @@ $(document).ready(
           Map.createMap();
           break;
         }
+        case 'noRestaurants':
+        {
+          $('.dx-button-back-arrow').css('display','none');
+          break;
+        }
         /*case 'home':
         {
           if ( args.direction == 'backward' )

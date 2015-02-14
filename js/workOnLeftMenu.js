@@ -6,6 +6,7 @@ function workOnLeftMenu()
   this.viewHideMenu = viewHideMenu;
   this.entryWOLM = entryWOLM;
   this.setRestaurantData = setRestaurantData;
+  this.viewNoRestaurants = viewNoRestaurants;
 }
 
 function setRestaurantData()
@@ -34,7 +35,20 @@ function entryWOLM(args)
       WOLM.viewHow();
       break;
     }
+    case 'noRest':
+    {
+      WOLM.viewNoRestaurants();
+      break;
+    }
   }
+}
+
+function viewNoRestaurants()
+{
+  $('#restaurantMenu').parent().css('background-color','#dddddd');
+  $('#map').parent().css('background-color','#dddddd');
+  $('#howToUse').parent().css('background-color','#dddddd');
+  this.viewHideMenu();
 }
 
 function viewHideMenu()

@@ -118,7 +118,9 @@ function searchRest(markersStore)
   
   if ( this.countNear == 0 )
   {
-  
+    //var args = { viewInfo: { viewName: 'noRest' } }
+    //WOLM.entryWOLM(args);
+    MyApp.app.navigate('noRestaurants');
   }
   
   this.nearStoreRestaurant = tempArray;

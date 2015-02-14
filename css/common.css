@@ -58,3 +58,8 @@ div.dx-actionsheet-cancel div.dx-button-content{
 .dx-loadpanel-content{
   background-color: white;
 }
+
+/*Прогресс бар*/
+.dx-progressbar-range{
+  background-color: grey;
+}
