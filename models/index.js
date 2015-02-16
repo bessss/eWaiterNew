@@ -10,6 +10,22 @@ $(document).ready(
     MyApp.app.router.register(":view", { view: "home" });
     MyApp.app.navigate();
 
+    MyApp.app.on("viewHidden", function(args) {
+      switch ( args.viewInfo.viewName )
+      {
+        case 'map':
+        {
+          Map.createMap();
+          break;
+        }
+        case 'noRestaurants':
+        {
+          NR.clearNRInterval();
+          break;
+        }
+      }
+    });
+
     MyApp.app.on("viewShown", function(args) {
       WOLM.entryWOLM(args);
       MyApp.curentView = args.viewInfo.viewName;
@@ -22,24 +38,9 @@ $(document).ready(
         }
         case 'noRestaurants':
         {
-          $('.dx-button-back-arrow').css('display','none');
+          NR.setNRInterval();
           break;
         }
-        /*case 'home':
-        {
-          if ( args.direction == 'backward' )
-          {
-            MR.setItems();
-          }
-
-          if ( DD.modeRating == true )
-          {
-            //Если меняли рейтинг
-            MR.setItems();
-            DD.modeRating = false;
-          }
-          break;
-        }*/
         /*default:
         {
           if( args.viewInfo.viewName.indexOf('menuDetail') != -1 )

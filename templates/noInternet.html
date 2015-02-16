@@ -1,14 +1,14 @@
 <script type="text/javascript">
-clickCount = ko.observable(0);
+//clickCount = ko.observable(0);
 </script>
-<div data-options="dxView : { name: 'noRestaurants', title: 'Обратите Внимание !' } ">
-  <div class="gallery" data-bind="dxGallery: { dataSource: NR.galleryNoRestaurants, showIndicator: false, swipeEnabled: false }">
+<div data-options="dxView : { name: 'noInternet', title: 'Обратите Внимание !' } ">
+  <div class="gallery" data-bind="dxGallery: { dataSource: galleryNoRest, showIndicator: false, swipeEnabled: false }">
     <div style="color: #323232;" data-options="dxTemplate: { name: 'item' }">
       <p style="margin-top: 20px;">
         <span data-bind="text: topText"></span>
       </p>
-      <div style="height: 100%;">
-        <img style="height: 60%;" id="imgNR" data-bind="attr: { src: src }" />
+      <div>
+        <img data-bind="attr: { src: src }" style="width: 100%;" />
       </div>
       <div style="position: absolute;bottom: 28px;width: 80%;font-size: 12px;padding: 0px 10%;">
         <span data-bind="text: bottomText"></span>

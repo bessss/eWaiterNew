@@ -120,7 +120,10 @@ function searchRest(markersStore)
   {
     //var args = { viewInfo: { viewName: 'noRest' } }
     //WOLM.entryWOLM(args);
-    MyApp.app.navigate('noRestaurants');
+    //MyApp.app.router.register(":view", { view: "noRestaurants" });
+    //MyApp.app.router.register(":view/:id", { view: "noRestaurants", name: "noRestaurants" });
+    //MyApp.app.navigate( {view: 'noRestaurants'} );
+    MyApp.app.navigate('noRestaurants', { root: true })
   }
   
   this.nearStoreRestaurant = tempArray;
