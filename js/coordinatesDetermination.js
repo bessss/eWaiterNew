@@ -45,7 +45,3 @@ function getCurentCoordinates()
 }
 
 var CD = new coordinatesDetermination();
-
-$(document).ready(function(){
-  CD.getCurentCoordinates();
-});

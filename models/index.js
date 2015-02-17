@@ -1,5 +1,5 @@
 var MyApp = window.MyApp = { };
-$(document).ready(
+function onDeviceReady() {
   $(function() {
     MyApp.app = new DevExpress.framework.html.HtmlApplication({
       namespace: MyApp,
@@ -9,6 +9,7 @@ $(document).ready(
 
     MyApp.app.router.register(":view", { view: "home" });
     MyApp.app.navigate();
+    CD.getCurentCoordinates();
 
     MyApp.app.on("viewHidden", function(args) {
       switch ( args.viewInfo.viewName )
@@ -41,7 +42,7 @@ $(document).ready(
           NR.setNRInterval();
           break;
         }
-        /*default:
+        default:
         {
           if( args.viewInfo.viewName.indexOf('menuDetail') != -1 )
           {
@@ -49,9 +50,26 @@ $(document).ready(
             RD.setRewiewsArea();
           }
           break;
-        }*/
+        }
       }
     });
 
   })
-);
+}
+
+$(document).ready(function() {
+  window.isphone = false;
+  if(document.URL.indexOf("http://") === -1 && document.URL.indexOf("https://") === -1)
+  {
+    window.isphone = true;
+  }
+
+  if( window.isphone )
+  {
+    document.addEventListener("deviceready", onDeviceReady, false);
+  } 
+  else
+  {
+    onDeviceReady();
+  }
+});

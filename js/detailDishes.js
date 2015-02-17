@@ -53,7 +53,8 @@ function createDetailPage()
           '</div>' +
       '<!--<div id="mc-container"></div>-->' +
           '<div style="width: 100%;margin-top: 40px;" id="iFRM">' +
-            '<div id="disqus_thread"></div>' +  
+            '<!--<div id="disqus_thread"></div>-->' +
+            '<div id="hypercomments_widget"></div>' +  
           '</div>' +
         '</div>' +
       '</div>' +
