@@ -50,9 +50,14 @@ function createDetailPage()
               '<div style="text-align: right;font-size: 10px;">id: ' +
                 '<span id="menuId" data-bind="text: menuId"></span>' +
               '</div>' +
+              '<div style="width: 36px; height: 36px;background-image: url(\'images/ic_share.png\');background-color: transparent;" data-bind="dxButton: {' +
+                 'onClick: function() {' +
+                   'SS.setSharing();' +
+                 '}' +
+               '}"></div>' +
           '</div>' +
       '<!--<div id="mc-container"></div>-->' +
-          '<div style="width: 100%;margin-top: 40px;" id="iFRM">' +
+          '<div style="width: 100%;margin-top: 70px;" id="iFRM">' +
             '<!--<div id="disqus_thread"></div>-->' +
             '<div id="hypercomments_widget"></div>' +  
           '</div>' +
